@@ -56,6 +56,14 @@ def chatbot():
             # use sum_num() function to find sum of two numbers
             message = "The sum of {} and  {} is {}".format(num1, num2, sum_num(num1, num2))
             return prepare_response(message)
+
+    elif (req['result']['action'] == 'subtract_numbers'):
+            # grab two numbers from dialogflow parameters
+            num1 = int(req['result']['parameters']['num1'])
+            num2 = int(req['result']['parameters']['num2'])
+            # use sum_num() function to find sum of two numbers
+            message = "The sum of {} and  {} is {}".format(num1, num2, subtract_num(num1, num2))
+            return prepare_response(message)
     except:
         message = "Oops there was an error, try again"
         return prepare_response(message)
