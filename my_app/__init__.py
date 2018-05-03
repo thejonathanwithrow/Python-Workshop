@@ -16,12 +16,14 @@ def subtract_num(num1, num2):
     return num1 - num2
 
 
-'''
-def multiply_num()
+
+def multiply_num(num1, num2):
+    return num1 * num2
 
 
-def divide_num()
-'''
+def divide_num():
+    return num1 / num2
+
 
 def prepare_response(message):
     # build response body to return back to Dialogflow
@@ -62,7 +64,23 @@ def chatbot():
             num1 = int(req['result']['parameters']['num1'])
             num2 = int(req['result']['parameters']['num2'])
             # use sum_num() function to find sum of two numbers
-            message = "The sum of {} and  {} is {}".format(num1, num2, subtract_num(num1, num2))
+            message = "The difference of {} and  {} is {}".format(num1, num2, subtract_num(num1, num2))
+            return prepare_response(message)
+
+        elif (req['result']['action'] == 'multiply_numbers'):
+            # grab two numbers from dialogflow parameters
+            num1 = int(req['result']['parameters']['num1'])
+            num2 = int(req['result']['parameters']['num2'])
+            # use sum_num() function to find sum of two numbers
+            message = "The product of {} and  {} is {}".format(num1, num2, multiply_num(num1, num2))
+            return prepare_response(message)
+
+        elif (req['result']['action'] == 'divide_numbers'):
+            # grab two numbers from dialogflow parameters
+            num1 = int(req['result']['parameters']['num1'])
+            num2 = int(req['result']['parameters']['num2'])
+            # use sum_num() function to find sum of two numbers
+            message = "The remainder of {} and  {} is {}".format(num1, num2, divide_num(num1, num2))
             return prepare_response(message)
     except:
         message = "Oops there was an error, try again"
